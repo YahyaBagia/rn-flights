@@ -1,50 +1,84 @@
-# Welcome to your Expo app 👋
+# rn-flights
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Description
 
-## Get started
+React Native app that lets users search for flights (Similar to Google Flights)
 
-1. Install dependencies
+This project is a simplified mobile version of Google Flights built with React Native. It allows users to sign up, search for flights by selecting origin, destination, and travel dates, and view flight options with relevant details. Flight data is powered by the Sky Scrapper API (via RapidAPI). To optimize the limited free quota of API calls, the project includes a mock service layer that enables switching between live API responses and locally stored sample data. The app demonstrates clean UI, API integration, authentication flow, and overall mobile development best practices within a time-constrained technical assessment.
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## 📸 Screenshots
 
-   ```bash
-   npx expo start
-   ```
+| Login                                                  | Airport Search                                         | Flight Search                                          | Flight Details                                         |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| <img src="readme_assets/Screenshot1.png" width="200"/> | <img src="readme_assets/Screenshot2.png" width="200"/> | <img src="readme_assets/Screenshot3.png" width="200"/> | <img src="readme_assets/Screenshot4.png" width="200"/> |
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## ⚙️ Key Technologies Used
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+| Technology                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| [React Native](https://reactnative.dev/)                                    | A framework for building native mobile apps using JavaScript and React.                                   |
+| [Expo](https://expo.dev)                                                    | A development platform that streamlines building and deploying React Native apps.                         |
+| [TypeScript](http://typescriptlang.org/)                                    | A strongly typed programming language that builds on JavaScript, providing better tooling at any scale.   |
+| [AsyncStorage](https://github.com/react-native-async-storage/async-storage) | A simple, unencrypted, asynchronous key-value storage system for persisting data locally in React Native. |
+| [Zustand](https://zustand-demo.pmnd.rs/)                                    | A small, fast and scalable bearbones state-management solution using simplified flux principles.          |
+| [React Native Paper](https://reactnativepaper.com/)                         | A cross-platform UI component library that follows Material Design guidelines.                            |
 
-## Get a fresh project
+---
 
-When you're ready, run:
+## 🖥️ Environment setup
+
+- Install [NodeJS](https://nodejs.org/en/) from installer or via [Homebrew](https://formulae.brew.sh/formula/node) for MacOS/Linux or [Chocolatey](https://community.chocolatey.org/packages/nodejs) for Windows.
+- Verify `node` and `npm` commands from terminal: `node -v && npm -v`.
+- (Optional) Install [`yarn`](https://yarnpkg.com/) package manager.
+
+---
+
+## 🛠️ Setup Instructions
+
+### ⬇️ Clone repo
 
 ```bash
-npm run reset-project
+git clone https://github.com/YahyaBagia/rn-flights
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 📦 Install Packages
 
-## Learn more
+```bash
+yarn # or npm install
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### 🏁 Run Project
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+yarn ios # launches iOS simulator
+# OR
+yarn android # launches Android emulator
+# OR
+yarn web # launches Web Browser
+```
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
+## 🧩 Explanation
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### 🔐 Authentication Features
+
+- **Login:** Validates user credentials from a local in-memory list stored in `AsyncStorage`.
+- **Signup:** Registers a new user (if not already existing) and appends them to the user list in `AsyncStorage`.
+- **Logout:** Clears the session and navigates back to the auth screens.
+- **Auto-login on App Launch:** Loads the persisted session if a user was previously logged in.
+
+### 🧭 FLight API
+
+- Uses [SkyScrapper](https://rapidapi.com/apiheya/api/sky-scrapper) API from [RapidAPI](https://rapidapi.com/)
+- Has a mock layer that uses locally saved JSON files instead of calling the APIs.
+
+---
+
+## 📌 Notes
+
+- Passwords are stored in plaintext for demonstration purposes only.
